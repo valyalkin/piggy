@@ -1,0 +1,2 @@
+GET http://localhost:8010/v1/stocks/portfolio?userId=user
+Content-Type: application/json

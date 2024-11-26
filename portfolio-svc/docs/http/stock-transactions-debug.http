@@ -1,0 +1,29 @@
+###
+
+POST http://localhost:8010/v1/stocks/transaction
+Content-Type: application/json
+
+{
+  "userId": "user",
+  "ticker": "NET",
+  "date" : "2024-05-03T00:00:00.00Z",
+  "quantity": 60,
+  "price": 87.53,
+  "transactionType": "BUY",
+  "currency": "USD"
+}
+
+###
+
+POST http://localhost:8010/v1/stocks/transaction
+Content-Type: application/json
+
+{
+  "userId": "user",
+  "ticker": "AAPL",
+  "date" : "2023-02-05T00:00:00.00Z",
+  "quantity": 54,
+  "price": 186.84,
+  "transactionType": "BUY",
+  "currency": "USD"
+}

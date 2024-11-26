@@ -1,0 +1,24 @@
+server:
+  port: 8010
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    hikari:
+      maximum-pool-size: 20       # Maximum number of connections in the pool
+      minimum-idle: 10            # Minimum number of idle connections in the pool
+      idle-timeout: 30000         # Maximum idle time before a connection is closed (in milliseconds)
+      connection-timeout: 20000   # Maximum time to wait for a connection from the pool (in milliseconds)
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+#      ddl-auto: update
+      ddl-auto: create-drop
+
+data:
+  marketstack:
+    url: http://localhost:8080 # Wiremock stub server
+    apikey: "xxx"

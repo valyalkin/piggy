@@ -1,0 +1,19 @@
+meta {
+  name: end-of-day-data
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.marketstack.com/v1/eod?access_key=20b2fa1b17169e5559c95aee79e74e81&symbols=NET&date_from=2019-01-01&limit=1000&offset=0
+  body: none
+  auth: none
+}
+
+params:query {
+  access_key: 20b2fa1b17169e5559c95aee79e74e81
+  symbols: NET
+  date_from: 2019-01-01
+  limit: 1000
+  offset: 0
+}
