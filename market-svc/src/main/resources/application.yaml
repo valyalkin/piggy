@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: password
+    url: jdbc:postgresql://localhost:5432/marketdata
+    username: market-svc
+    password: market-pass
     hikari:
       maximum-pool-size: 20       # Maximum number of connections in the pool
       minimum-idle: 10            # Minimum number of idle connections in the pool
@@ -17,6 +17,13 @@ spring:
     hibernate:
       #      ddl-auto: update
       ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        default_schema: market_schema
+
+
+
 
 data:
   marketstack:
