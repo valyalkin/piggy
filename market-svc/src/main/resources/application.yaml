@@ -1,11 +1,11 @@
 server:
-  port: 8010
+  port: 8020
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/portfolio
-    username: portfolio-svc
-    password: portfolio-pass
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
     hikari:
       maximum-pool-size: 20       # Maximum number of connections in the pool
       minimum-idle: 10            # Minimum number of idle connections in the pool
@@ -15,15 +15,8 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     hibernate:
-#      ddl-auto: update
+      #      ddl-auto: update
       ddl-auto: create-drop
-
-    properties:
-      hibernate:
-        default_schema: portfolio_schema
-
-
-
 
 data:
   marketstack:
