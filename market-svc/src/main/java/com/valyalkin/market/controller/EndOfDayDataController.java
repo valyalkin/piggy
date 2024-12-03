@@ -4,6 +4,9 @@ import com.valyalkin.market.eod.EndOfDayDataService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/eod")
 public class EndOfDayDataController {
@@ -18,6 +21,8 @@ public class EndOfDayDataController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public void process(@RequestParam String tickers) {
 
+        final List<String> tickersList = Arrays.asList(tickers.toUpperCase().split(","));
+        tickersList.forEach(endOfDayDataService::processEndOfDayData);
 
     }
 }

@@ -20,7 +20,7 @@ spring:
 
     properties:
       hibernate:
-        default_schema: market_schema
+        default_schema: marketdata_schema
 
 
 

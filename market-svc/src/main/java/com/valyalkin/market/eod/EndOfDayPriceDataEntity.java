@@ -5,13 +5,11 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Currency;
 import java.util.UUID;
 
 @Entity
 @Table(name = "end_of_day")
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -23,7 +21,6 @@ public class EndOfDayPriceDataEntity {
     @Column(name = "ticker", nullable = false)
     private String ticker;
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private LocalDate date;
 
