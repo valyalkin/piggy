@@ -39,7 +39,6 @@ public class TickersEntity {
 
     private String country;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "country_code")
-    private Country countryCode;
+    private String countryCode;
 }

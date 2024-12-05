@@ -1,4 +1,4 @@
-package com.valyalkin.market.exception;
+package com.valyalkin.market.config.exception;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {

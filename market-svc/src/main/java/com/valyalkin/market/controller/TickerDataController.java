@@ -1,6 +1,6 @@
 package com.valyalkin.market.controller;
 
-import com.valyalkin.market.ticker.TickerData;
+import com.valyalkin.market.providers.TickerData;
 import com.valyalkin.market.ticker.TickerService;
 import org.springframework.web.bind.annotation.*;
 
