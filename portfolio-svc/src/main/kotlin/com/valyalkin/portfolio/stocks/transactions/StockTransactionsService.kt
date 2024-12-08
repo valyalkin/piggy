@@ -1,7 +1,6 @@
 package com.valyalkin.portfolio.stocks.transactions
 
-import com.valyalkin.portfolio.configuration.BusinessException
-import com.valyalkin.portfolio.data.MarketDataService
+import com.valyalkin.portfolio.configuration.exception.BusinessException
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingEntity
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingsRepository
 import com.valyalkin.portfolio.stocks.holdings.StockHoldingEntity
@@ -25,16 +24,12 @@ class StockTransactionsService(
     private val stockHoldingsRepository: StockHoldingsRepository,
     private val releasedProfitLossEntityRepository: ReleasedProfitLossEntityRepository,
     private val historicalStockHoldingsRepository: HistoricalStockHoldingsRepository,
-    private val marketDataService: MarketDataService,
 ) {
     @Transactional
     fun addTransaction(stockTransactionDTO: StockTransactionDTO): StockTransactionEntity {
         val (userId, ticker, date, quantity, price, currency, transactionType) = stockTransactionDTO
 
-        // Validate if ticker exists and currency is correct for this ticker
-        val tickerData = marketDataService.getTickerData(ticker)
-        marketDataService.validateCurrency(ticker, currency)
-
+        // TODO: Validate if ticker exists and currency is correct for this ticker
         // Get all transactions by user id and ticker, sorted by date
         val previousTransactions =
             stockTransactionsRepository.findByUserIdAndTickerAndCurrencyOrderByDateAsc(

@@ -29,3 +29,8 @@ data:
   marketstack:
     url: http://localhost:8080 # Wiremock stub server
     apikey: "xxx"
+
+
+dependencies:
+  market:
+    url: http://localhost:8020

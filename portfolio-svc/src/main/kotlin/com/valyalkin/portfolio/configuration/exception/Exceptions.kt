@@ -1,4 +1,4 @@
-package com.valyalkin.portfolio.configuration
+package com.valyalkin.portfolio.configuration.exception
 
 class NotFoundException(
     override val message: String,

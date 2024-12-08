@@ -1,6 +1,6 @@
 package com.valyalkin.portfolio.stocks.portfolio
 
-import com.valyalkin.portfolio.data.MarketDataService
+import com.valyalkin.portfolio.market.MarketDataGateway
 import com.valyalkin.portfolio.stocks.holdings.StockHoldingsService
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
@@ -10,16 +10,16 @@ import java.time.LocalDate
 @Service
 class StocksPortfolioService(
     private val stockHoldingsService: StockHoldingsService,
-    private val marketDataService: MarketDataService,
+    private val marketDataGateway: MarketDataGateway,
 ) {
     fun getPortfolio(userId: String): StocksPortfolio {
         val holdings = stockHoldingsService.stockHoldings(userId = userId)
 
         val overview =
             holdings.map { holding ->
-                val lastPrice = marketDataService.getLatestEodPrice(holding.ticker)
+                val lastPrice = marketDataGateway.latestPrice(holding.ticker)
                 val value = holding.averagePrice.multiply(BigDecimal.valueOf(holding.quantity))
-                val marketValue = lastPrice.first.multiply(BigDecimal.valueOf(holding.quantity))
+                val marketValue = lastPrice.price.multiply(BigDecimal.valueOf(holding.quantity))
 
                 val totalGain = marketValue.minus(value)
                 val totalGainPercentage = totalGain.multiply(BigDecimal.valueOf(100L)).divide(value, RoundingMode.HALF_UP)
@@ -27,10 +27,10 @@ class StocksPortfolioService(
                     holding.ticker,
                     quantity = holding.quantity,
                     averagePrice = holding.averagePrice,
-                    lastPrice = lastPrice.first,
+                    lastPrice = lastPrice.price,
                     totalGain = totalGain,
                     totalGainPercentage = totalGainPercentage,
-                    asOf = lastPrice.second,
+                    asOf = lastPrice.latestDate,
                 )
             }
 

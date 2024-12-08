@@ -1,8 +1,6 @@
 package com.valyalkin.portfolio.integration
 
-import com.valyalkin.portfolio.configuration.Mapper
-import com.valyalkin.portfolio.data.MarketDataService
-import com.valyalkin.portfolio.data.TickerData
+import com.valyalkin.portfolio.configuration.mapper.Mapper
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingEntity
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingsRepository
 import com.valyalkin.portfolio.stocks.holdings.StockHoldingEntity
@@ -14,11 +12,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -45,19 +41,12 @@ class StocksTest {
     @Autowired
     private lateinit var historicalStockHoldingsRepository: HistoricalStockHoldingsRepository
 
-    @MockBean
-    private lateinit var marketDataService: MarketDataService
-
     @BeforeEach
     fun cleanUp() {
         stockTransactionsRepository.deleteAll()
         stockHoldingsRepository.deleteAll()
         releasedProfitLossEntityRepository.deleteAll()
         historicalStockHoldingsRepository.deleteAll()
-
-        Mockito.`when`(marketDataService.getTickerData("APPL")).thenReturn(
-            TickerData("APPL", Currency.USD),
-        )
     }
 
     private val testUserId = "test"

@@ -1,4 +1,4 @@
-package com.valyalkin.portfolio.configuration
+package com.valyalkin.portfolio.configuration.exception
 
 import jakarta.servlet.http.HttpServletRequest
 import org.slf4j.LoggerFactory
