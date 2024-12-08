@@ -34,11 +34,11 @@ interface EndOfDayPriceDataRepository : JpaRepository<EndOfDayPriceDataEntity, U
 
     @Query(
         """
-            SELECT eod 
+            SELECT eod
             FROM EndOfDayPriceDataEntity eod
             WHERE eod.ticker = :ticker AND eod.date = (
-                SELECT MAX(eod1.date) 
-                FROM EndOfDayPriceDataEntity eod1 
+                SELECT MAX(eod1.date)
+                FROM EndOfDayPriceDataEntity eod1
                 WHERE eod1.ticker = :ticker
             )
     """,

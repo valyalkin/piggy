@@ -1,5 +1,6 @@
 package com.valyalkin.market.eod;
 
+import com.valyalkin.market.config.exception.NotFoundException;
 import com.valyalkin.market.providers.EndOfDayData;
 import com.valyalkin.market.providers.MarketDataProvider;
 import org.slf4j.Logger;
@@ -63,6 +64,20 @@ public class EndOfDayDataService {
                 }
         );
 
+    }
+
+    public LatestPrice latestPriceForTicker(String ticker) {
+        final var entity = endOfDayPriceDataRepository.findLatestPriceForTicker(ticker);
+
+        if (entity != null) {
+            return new LatestPrice(
+                    ticker,
+                    entity.getDate(),
+                    entity.getPrice()
+            );
+        } else {
+            throw new NotFoundException(String.format("No price found for ticker %s", ticker));
+        }
     }
 
 }

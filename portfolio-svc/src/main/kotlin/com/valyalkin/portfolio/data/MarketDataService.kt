@@ -218,8 +218,8 @@ class MarketDataService(
 
     @PostConstruct
     fun test() {
-//        processEndOfDayData()
-//        logger.info(getTickerData("AAPL").toString())
+        //        processEndOfDayData()
+        //        logger.info(getTickerData("AAPL").toString())
     }
 
     companion object {
