@@ -1,0 +1,4 @@
+data:
+  marketstack:
+    url: http://localhost:${wiremock.server.port}
+    apikey: "test"

@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/v1/dividends",
+    "queryParameters": {
+      "access_key": {
+        "equalTo": "xxx"
+      },
+      "symbols": {
+        "equalTo": "AAPL"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "dividends-aapl-response.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
