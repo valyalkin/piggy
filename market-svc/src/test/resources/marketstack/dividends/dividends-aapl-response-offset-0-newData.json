@@ -1,0 +1,15 @@
+{
+  "pagination": {
+    "limit": 1000,
+    "offset": 0,
+    "count": 1,
+    "total": 1
+  },
+  "data": [
+    {
+      "date": "2024-11-08",
+      "dividend": 0.25,
+      "symbol": "AAPL"
+    }
+  ]
+}

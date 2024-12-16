@@ -1,6 +1,6 @@
-package com.valyalkin.market.providers;
+package com.valyalkin.market.providers.model;
 
-public record TickerData(
+public record TickerDto(
         String ticker,
         String name,
         boolean hasEodPrice,

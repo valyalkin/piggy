@@ -1,4 +1,4 @@
-package com.valyalkin.market.providers.marketstack;
+package com.valyalkin.market.providers.marketstack.config;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

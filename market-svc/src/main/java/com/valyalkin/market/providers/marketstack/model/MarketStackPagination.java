@@ -1,4 +1,4 @@
-package com.valyalkin.market.providers.marketstack;
+package com.valyalkin.market.providers.marketstack.model;
 
 public record MarketStackPagination(
         int limit,

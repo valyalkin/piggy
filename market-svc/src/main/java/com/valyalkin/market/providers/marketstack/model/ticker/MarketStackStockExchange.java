@@ -1,4 +1,4 @@
-package com.valyalkin.market.providers.marketstack.ticker;
+package com.valyalkin.market.providers.marketstack.model.ticker;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

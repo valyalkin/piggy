@@ -1,7 +1,8 @@
 package com.valyalkin.market.eod;
 
 import com.valyalkin.market.config.exception.NotFoundException;
-import com.valyalkin.market.providers.EndOfDayData;
+import com.valyalkin.market.dto.LatestPriceDto;
+import com.valyalkin.market.providers.model.EndOfDayPrice;
 import com.valyalkin.market.providers.MarketDataProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class EndOfDayDataService {
 
     private static Logger logger = LoggerFactory.getLogger(EndOfDayDataService.class);
 
-    public void processEndOfDayData(String ticker) {
+    public void processDividends(String ticker) {
 
         final var latestDate = endOfDayPriceDataRepository.findLatestPriceDateForTicker(ticker);
 
@@ -38,7 +39,7 @@ public class EndOfDayDataService {
 
         final var eodDate = marketDataProvider.endOfDayData(ticker, dateFrom, 0);
 
-        final List<EndOfDayData> list = new ArrayList<>(eodDate.eod());
+        final List<EndOfDayPrice> list = new ArrayList<>(eodDate.eod());
 
         final var pagination = eodDate.pagination();
         final int numCalls = (int) Math.ceil((double) pagination.total() / pagination.limit());
@@ -48,7 +49,6 @@ public class EndOfDayDataService {
                 final var offset = i * pagination.limit();
                 final var eod = marketDataProvider.endOfDayData(ticker, dateFrom, offset);
                 list.addAll(eod.eod());
-
             }
         }
 
@@ -66,11 +66,11 @@ public class EndOfDayDataService {
 
     }
 
-    public LatestPrice latestPriceForTicker(String ticker) {
+    public LatestPriceDto latestPriceForTicker(String ticker) {
         final var entity = endOfDayPriceDataRepository.findLatestPriceForTicker(ticker);
 
         if (entity != null) {
-            return new LatestPrice(
+            return new LatestPriceDto(
                     ticker,
                     entity.getDate(),
                     entity.getPrice()

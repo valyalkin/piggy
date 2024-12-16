@@ -24,21 +24,27 @@ public class TickersEntity {
     private String symbol;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Currency currency;
 
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "has_eod")
+    @Column(name = "has_eod", nullable = false)
     private boolean hasEodPrice;
 
+    @Column(nullable = false)
     private String exchange;
 
+    @Column(nullable = false)
     private String acronym;
 
+    @Column(nullable = false)
     private String mic;
 
+    @Column(nullable = false)
     private String country;
 
-    @Column(name = "country_code")
+    @Column(name = "country_code", nullable = false)
     private String countryCode;
 }

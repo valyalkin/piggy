@@ -1,7 +1,8 @@
 package com.valyalkin.market.ticker;
 
+import com.valyalkin.market.eod.Currency;
 import com.valyalkin.market.providers.MarketDataProvider;
-import com.valyalkin.market.providers.TickerData;
+import com.valyalkin.market.providers.model.TickerDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,12 +16,12 @@ public class TickerService {
         this.marketDataProvider = marketDataProvider;
     }
 
-    public TickerData getTickerData(String ticker) {
+    public TickerDto getTickerData(String ticker) {
 
         final var tickerEntity = tickersRepository.findBySymbol(ticker);
 
         if (tickerEntity != null) {
-            return new TickerData(
+            return new TickerDto(
                     ticker,
                     tickerEntity.getName(),
                     tickerEntity.isHasEodPrice(),
@@ -43,6 +44,7 @@ public class TickerService {
         entity.setMic(tickerData.mic());
         entity.setCountry(tickerData.country());
         entity.setCountryCode(tickerData.countryCode());
+        entity.setCurrency(Currency.USD);
 
         tickersRepository.save(entity);
 

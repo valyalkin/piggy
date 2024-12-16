@@ -1,7 +1,7 @@
-package com.valyalkin.market.providers.marketstack.eod;
+package com.valyalkin.market.providers.marketstack.model.eod;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.valyalkin.market.providers.marketstack.CustomLocalDateDeserializer;
+import com.valyalkin.market.providers.marketstack.config.CustomLocalDateDeserializer;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

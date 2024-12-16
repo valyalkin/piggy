@@ -1,4 +1,4 @@
-package com.valyalkin.market.providers;
+package com.valyalkin.market.providers.model;
 
 public record Pagination(
         int limit,

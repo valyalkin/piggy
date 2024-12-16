@@ -1,6 +1,6 @@
 package com.valyalkin.market.controller;
 
-import com.valyalkin.market.providers.TickerData;
+import com.valyalkin.market.providers.model.TickerDto;
 import com.valyalkin.market.ticker.TickerService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class TickerDataController {
     }
 
     @GetMapping("/{ticker}")
-    public TickerData tickerData(@PathVariable String ticker) {
+    public TickerDto tickerData(@PathVariable String ticker) {
         return tickerService.getTickerData(ticker);
     }
 }

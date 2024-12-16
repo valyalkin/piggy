@@ -1,9 +1,9 @@
-package com.valyalkin.market.eod;
+package com.valyalkin.market.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record LatestPrice(
+public record LatestPriceDto(
         String ticker,
         LocalDate latestDate,
         BigDecimal price
