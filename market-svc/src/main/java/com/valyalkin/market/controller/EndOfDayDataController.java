@@ -23,7 +23,7 @@ public class EndOfDayDataController {
     public void process(@RequestParam String tickers) {
 
         final List<String> tickersList = Arrays.asList(tickers.toUpperCase().split(","));
-        tickersList.forEach(endOfDayDataService::processDividends);
+        tickersList.forEach(endOfDayDataService::processEodData);
     }
 
     @GetMapping("/latest-price/{ticker}")

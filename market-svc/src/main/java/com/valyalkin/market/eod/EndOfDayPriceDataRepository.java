@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 public interface EndOfDayPriceDataRepository extends JpaRepository<EndOfDayPriceDataEntity, UUID> {
@@ -26,4 +27,6 @@ public interface EndOfDayPriceDataRepository extends JpaRepository<EndOfDayPrice
                     ")"
     )
     EndOfDayPriceDataEntity findLatestPriceForTicker(@Param("ticker") String ticker);
+
+    List<EndOfDayPriceDataEntity> findByTicker(String ticker);
 }

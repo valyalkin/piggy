@@ -1,0 +1,61 @@
+{
+  "pagination": {
+    "limit": 100,
+    "offset": 0,
+    "count": 3,
+    "total": 3
+  },
+  "data": [
+    {
+      "open": 247.99,
+      "high": 251.38,
+      "low": 247.65,
+      "close": 251.04,
+      "volume": 51665600,
+      "adj_high": 251.38,
+      "adj_low": 247.65,
+      "adj_close": 251.04,
+      "adj_open": 247.99,
+      "adj_volume": 51694753,
+      "split_factor": 1,
+      "dividend": 0,
+      "symbol": "AAPL",
+      "exchange": "XNAS",
+      "date": "2024-12-16T00:00:00+0000"
+    },
+    {
+      "open": 247.82,
+      "high": 249.29,
+      "low": 246.24,
+      "close": 248.13,
+      "volume": 33132000,
+      "adj_high": 249.2902,
+      "adj_low": 246.24,
+      "adj_close": 248.13,
+      "adj_open": 247.815,
+      "adj_volume": 33155290,
+      "split_factor": 1,
+      "dividend": 0,
+      "symbol": "AAPL",
+      "exchange": "XNAS",
+      "date": "2024-12-13T00:00:00+0000"
+    },
+    {
+      "open": 246.945,
+      "high": 248.74,
+      "low": 245.68,
+      "close": 247.96,
+      "volume": 29983256,
+      "adj_high": 248.74,
+      "adj_low": 245.68,
+      "adj_close": 247.96,
+      "adj_open": 246.89,
+      "adj_volume": 32777532,
+      "split_factor": 1,
+      "dividend": 0,
+      "symbol": "AAPL",
+      "exchange": "XNAS",
+      "date": "2024-12-12T00:00:00+0000"
+    }
+  ]
+}

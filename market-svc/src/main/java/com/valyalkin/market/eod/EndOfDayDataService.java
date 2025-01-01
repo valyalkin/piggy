@@ -6,6 +6,7 @@ import com.valyalkin.market.providers.model.EndOfDayPrice;
 import com.valyalkin.market.providers.MarketDataProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,16 +24,18 @@ public class EndOfDayDataService {
         this.marketDataProvider = marketDataProvider;
     }
 
+    private @Value("${data.date-from}") LocalDate date;
+
     private static Logger logger = LoggerFactory.getLogger(EndOfDayDataService.class);
 
-    public void processDividends(String ticker) {
+    public void processEodData(String ticker) {
 
         final var latestDate = endOfDayPriceDataRepository.findLatestPriceDateForTicker(ticker);
 
         final LocalDate dateFrom;
 
         if (latestDate == null) {
-            dateFrom = LocalDate.of(2019, 1, 1); // TODO:  Have it as configuration
+            dateFrom = date;
         } else {
             dateFrom = latestDate.plusDays(1);
         }
