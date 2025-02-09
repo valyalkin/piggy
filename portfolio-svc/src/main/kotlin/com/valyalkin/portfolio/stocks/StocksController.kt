@@ -29,7 +29,10 @@ class StocksController(
     @ResponseStatus(HttpStatus.CREATED)
     fun addTransaction(
         @RequestBody @Valid stockTransactionDTO: StockTransactionDTO,
-    ): StockTransactionEntity = transactionsService.addTransaction(stockTransactionDTO)
+    ): StockTransactionEntity =
+        transactionsService.addTransaction(stockTransactionDTO).also {
+            dividendsService.triggerUpdate(stockTransactionDTO.ticker)
+        }
 
     @DeleteMapping("/transaction/{transactionId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

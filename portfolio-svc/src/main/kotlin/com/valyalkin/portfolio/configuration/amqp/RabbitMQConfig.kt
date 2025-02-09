@@ -12,7 +12,7 @@ class RabbitMQConfig {
     companion object {
         const val QUEUE_NAME = "queue"
         const val EXCHANGE_NAME = "exchange"
-        const val ROUTING_KEY = "routing-key"
+        const val ROUTING_KEY = "dividends"
     }
 
     @Bean

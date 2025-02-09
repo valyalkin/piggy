@@ -15,4 +15,12 @@ class DividendsService(
             message,
         )
     }
+
+    fun triggerUpdate(ticker: String) {
+        rabbitTemplate.convertAndSend(
+            RabbitMQConfig.EXCHANGE_NAME,
+            RabbitMQConfig.ROUTING_KEY,
+            ticker,
+        )
+    }
 }
