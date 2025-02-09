@@ -131,7 +131,7 @@ public class MarketStackProvider implements MarketDataProvider {
     @Override
     public DividendsPage dividends(String ticker, LocalDate dateFrom, int offset) {
         String uri = UriComponentsBuilder
-                .fromUriString(marketStackUrl + "/v1/dividends")
+                .fromUriString(marketStackUrl + "/v2/dividends")
                 .queryParam("access_key", marketStackApiKey)
                 .queryParam("symbols", ticker)
                 .queryParam("date_from", dateFrom.toString())

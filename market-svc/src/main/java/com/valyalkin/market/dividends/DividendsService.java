@@ -61,10 +61,10 @@ public class DividendsService {
 
         list.forEach(
                 (dividend -> {
-                    logger.info("saving " + dividend);
+                    logger.info("saving {}", dividend);
                     final var entity = new DividendsEntity();
                     entity.setDividend(dividend.dividend());
-                    entity.setDate(dividend.date());
+                    entity.setRecordDate(dividend.date());
                     entity.setTicker(dividend.ticker());
                     dividendsRepository.save(entity);
                 })
@@ -73,13 +73,13 @@ public class DividendsService {
 
     public DividendsDto dividends(String ticker) {
 
-        final List<DividendsEntity> entities = dividendsRepository.findByTickerOrderByDateDesc(ticker);
+        final List<DividendsEntity> entities = dividendsRepository.findByTickerOrderByRecordDateDesc(ticker);
 
         if (entities != null) {
             var dividends = entities.stream().map(
                     (dividendsEntity ->
                         new DividendDto(
-                                dividendsEntity.getDate(),
+                                dividendsEntity.getRecordDate(),
                                 dividendsEntity.getDividend()
                         )
                     )

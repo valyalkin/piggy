@@ -21,6 +21,11 @@ spring:
     properties:
       hibernate:
         default_schema: portfolio_schema
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 
 
@@ -34,3 +39,4 @@ data:
 dependencies:
   market:
     url: http://localhost:8020
+

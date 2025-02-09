@@ -1,5 +1,6 @@
 package com.valyalkin.portfolio.stocks
 
+import com.valyalkin.portfolio.stocks.dividends.DividendsService
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingEntity
 import com.valyalkin.portfolio.stocks.holdings.HistoricalStockHoldingsService
 import com.valyalkin.portfolio.stocks.holdings.StockHoldingEntity
@@ -22,6 +23,7 @@ class StocksController(
     private val holdingsService: StockHoldingsService,
     private val portfolioService: StocksPortfolioService,
     private val historicalStockHoldingsService: HistoricalStockHoldingsService,
+    private val dividendsService: DividendsService,
 ) {
     @PostMapping("/transaction")
     @ResponseStatus(HttpStatus.CREATED)
@@ -62,4 +64,10 @@ class StocksController(
     fun historicalHoldings(
         @RequestParam(name = "userId") userId: String,
     ): List<HistoricalStockHoldingEntity> = historicalStockHoldingsService.historicalHoldings(userId)
+
+    @GetMapping("/dividends")
+    @ResponseStatus(HttpStatus.OK)
+    fun dividends(
+        @RequestParam(name = "userId") userId: String,
+    ) = dividendsService.sendMessage("Hello")
 }

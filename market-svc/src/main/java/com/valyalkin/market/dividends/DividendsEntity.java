@@ -26,7 +26,7 @@ public class DividendsEntity {
     private String ticker;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDate recordDate;
 
     @Column(nullable = false)
     private BigDecimal dividend;

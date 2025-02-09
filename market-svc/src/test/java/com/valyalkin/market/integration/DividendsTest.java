@@ -80,7 +80,7 @@ public class DividendsTest {
 
         service.processDividends(ticker);
 
-        var entities = dividendsRepository.findByTickerOrderByDateDesc(symbol);
+        var entities = dividendsRepository.findByTickerOrderByRecordDateDesc(symbol);
         assertThat(entities.size()).isEqualTo(86);
 
     }
@@ -132,21 +132,21 @@ public class DividendsTest {
         // Previously saved dividend
         final var entity = new DividendsEntity();
         entity.setDividend(BigDecimal.valueOf(0.25));
-        entity.setDate(LocalDate.of(2024, 8, 12));
+        entity.setRecordDate(LocalDate.of(2024, 8, 12));
         entity.setTicker(symbol);
         dividendsRepository.save(entity);
 
         service.processDividends(ticker);
 
-        var entities = dividendsRepository.findByTickerOrderByDateDesc(symbol);
+        var entities = dividendsRepository.findByTickerOrderByRecordDateDesc(symbol);
         assertThat(entities.size()).isEqualTo(2);
 
         assertThat(entities.getFirst().getTicker()).isEqualTo(symbol);
-        assertThat(entities.getFirst().getDate()).isEqualTo(LocalDate.of(2024, 11, 8));
+        assertThat(entities.getFirst().getRecordDate()).isEqualTo(LocalDate.of(2024, 11, 8));
         assertThat(entities.getFirst().getDividend()).isGreaterThanOrEqualTo(BigDecimal.valueOf(0.25));
 
         assertThat(entities.get(1).getTicker()).isEqualTo(symbol);
-        assertThat(entities.get(1).getDate()).isEqualTo(LocalDate.of(2024, 8, 12));
+        assertThat(entities.get(1).getRecordDate()).isEqualTo(LocalDate.of(2024, 8, 12));
         assertThat(entities.get(1).getDividend()).isGreaterThanOrEqualTo(BigDecimal.valueOf(0.25));
 
 
